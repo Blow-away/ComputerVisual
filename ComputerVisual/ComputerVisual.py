@@ -72,7 +72,8 @@ class SplitAndMerge_1(object):
                     disnow=np.fabs(nume/deno)
                     dis.append(disnow)
         dis = list(map(lambda x:x**2,dis))
-        exp = sum(dis)/len(dis)
+        exp = sum(dis)
+        #exp /= len(dis)
         return exp
     def __split(self,P):
         #y = kx + b
@@ -140,11 +141,11 @@ class SplitAndMerge_1(object):
     
     #找答案
     def __findAnswer(self):
-        latelyExp = 100000.0
+        latelyExp = 100001.0
         nowExp = 100000.0
         newP = list(self.P)
         count =0
-        while(nowExp <= latelyExp ):
+        while(nowExp != latelyExp ):
             count+=1
             self.P = list(newP)
             newP = self.__split(newP)
